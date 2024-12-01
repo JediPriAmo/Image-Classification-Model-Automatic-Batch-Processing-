@@ -22,7 +22,29 @@ This project is designed to automate the classification of returned items for an
 
 ---
 
-### 2. Batch Processing Module & Results CSV
+### 2. Image Model: Training and Documentation
+This project includes two key files for managing and training the image classification model:
+
+1. Image_model.ipynb:
+
+  - This is the primary file used to train your image classification model.
+  - The notebook guides you through:
+     - Collecting and preprocessing images.
+     - Training the model using a Support Vector Machine (SVM) with hyperparameter tuning.
+     - Serializing (saving) the trained model into a pickle(.p) file using the pickle library.
+
+  - After training, save the model in the directory you set up as img_model.p for use in other scripts like batch_predict.py and r2fineAPI.py.
+
+2. Image_model_documented.py:
+
+  - This file contains the same workflow as the notebook, but it is fully documented for reference purposes.
+  - It is not intended for execution but serves as a resource to help users understand the workflow and implementation without needing to dive into the notebook.
+
+***Recommendation***: Use Image_model.ipynb for training and save the pickle(.p) file, then consult Image_model_documented.py for clarification if you need help understanding the steps or logic.
+
+---
+
+### 3. Batch Processing Module & Results CSV
 1. Copy the path to the `image_storage` folder.
 2. Open the `batch_predict.py` file and update the paths:
    - **Image Storage Path**: Replace `IMAGE_STORAGE_PATH` with your folder's path.
@@ -42,7 +64,7 @@ python batch_predict.py
 
 ---
 
-### 3. Nightly Schedular & Logs
+### 4. Nightly Schedular & Logs
 1. Run the nightly_schedular.py script in the terminal:
 ```bash
 python nightly_schedular.py
@@ -52,7 +74,7 @@ python nightly_schedular.py
 
 ---
 
-### 4. REST API: r2fineAPI.py & r2API_URL.ipynb
+### 5. REST API: r2fineAPI.py & r2API_URL.ipynb
 1. Open the r2fineAPI.py script and update the RESULTS_FILE path:
 ```python
 RESULTS_FILE = "C:/Users/Admin/YourFolderName/processed_results.csv"
@@ -73,10 +95,10 @@ python r2fineAPI.py
 ```
 
 6. Open the r2API_URL.ipynb notebook and:
-- Paste the above URL into the corresponding cell.
-- Replace or add new image URLs to test predictions.
+  - Paste the above URL into the corresponding cell.
+  - Replace or add new image URLs to test predictions.
 7. Execute the notebook cell to get the output in the following structure:
-- Confidence, Prediction, Timestamp, URL.
+  - Confidence, Prediction, Timestamp, URL.
 8. API results are logged to processed_results.csv.
 Execute the notebook cell to get the output in the following structure:
 Confidence, Prediction, Timestamp, URL.
